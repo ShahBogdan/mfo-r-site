@@ -6,6 +6,7 @@ import Footer from "../components/footer";
 import LoadingScreen from 'react-loading-screen';
 import {useTranslation} from 'react-i18next';
 import {Helmet} from "react-helmet";
+import ReactGA from 'react-ga';
 
 const Main = props => {
     const [list, setList] = useState(null);
@@ -23,7 +24,7 @@ const Main = props => {
     useEffect(() => {
         setLoading(true)
         mfo().then();
-
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }, []);
 
     const calculate = (index) => {
@@ -115,6 +116,18 @@ const Main = props => {
 
                 </Col>)
         })
+    }
+
+    const champion = () => {
+        let recommendedMfo = list ? list[0] : "";
+        return <Row className='align-items-center'>
+            <div className='col-12 col-lg-6 text-center text-lg-end'>
+                Лидер рейтинга
+            </div>
+            <div className='col-12 col-lg-6 text-center text-lg-start'>
+                <img style={{maxHeight: '70px', maxWidth: '163px'}} src={'https://mfo-rating.traffic-trade.com/' + recommendedMfo.img}/>
+            </div>
+        </Row>
     }
 
     return (

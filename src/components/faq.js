@@ -6,9 +6,8 @@ const FAQ = (props) => {
 
 
     useEffect(() => {
-
-    })
-
+console.log(props.data)
+    },[])
     return (
         <Accordion defaultActiveKey="0">
             {

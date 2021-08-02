@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Container, Row} from "react-bootstrap";
 import Footer from "../components/footer";
 import {useTranslation} from 'react-i18next';
 import ReactHtmlParser from 'react-html-parser';
 import {Link} from "react-router-dom";
+import ReactGA from 'react-ga';
 
 const ruText = "<div class=\"col-12\">\n" +
     "\t\t\t\t\t<p>\n" +
@@ -46,6 +47,9 @@ const uaText = "<div class=\"col-12\">\n" +
 
 const Security = props => {
     const {i18n} = useTranslation();
+    useEffect(()=>{
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    },[])
     return (
         <>
             <Container>

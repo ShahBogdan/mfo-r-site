@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Container, Row} from "react-bootstrap";
 import Footer from "../components/footer";
 import {useTranslation} from 'react-i18next';
 import {Helmet} from "react-helmet";
+import ReactGA from "react-ga";
 
 const Info = props => {
     const {t} = useTranslation();
-
+    useEffect(()=>{
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    },[])
     return (
         <>
             <Helmet>

@@ -6,6 +6,7 @@ import {useTranslation} from 'react-i18next';
 import {Helmet} from "react-helmet";
 import {getFaq} from "../api";
 import LoadingScreen from "react-loading-screen";
+import ReactGA from 'react-ga';
 
 const Faq = props => {
     const {t, i18n} = useTranslation();
@@ -20,7 +21,9 @@ const Faq = props => {
     }
 
     useEffect(() => {
+        setLoading(true)
         faq().then();
+        ReactGA.pageview(window.location.pathname + window.location.search);
     }, [])
 
     return (

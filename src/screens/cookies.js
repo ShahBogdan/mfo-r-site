@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Container, Row} from "react-bootstrap";
 import Footer from "../components/footer";
 import {useTranslation} from 'react-i18next';
 import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import ReactGA from "react-ga";
 
 const ruText = "<div className=\"col-12\">\n" +
     "                  <p>\n" +
@@ -91,6 +92,9 @@ const uaText = "<div class=\"col-12\">\n" +
     "\t\t\t\t\t</div>"
 const Cookies = props => {
     const {t,i18n} = useTranslation();
+    useEffect(()=>{
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    },[])
     return (
         <>
             <Container>

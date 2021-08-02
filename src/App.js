@@ -6,13 +6,19 @@ import Cookies from './screens/cookies';
 import Uses from './screens/uses'
 import Security from './screens/security'
 import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
-import React from "react";
+import React, {useEffect} from "react";
 import {Button, ButtonGroup, Container, Nav, Navbar} from "react-bootstrap";
 import './i18n';
 import {useTranslation} from 'react-i18next';
 
+import ReactGA from 'react-ga';
+
 function App() {
     const {t, i18n} = useTranslation();
+
+    useEffect(() => {
+        ReactGA.initialize('G-9EW9VE7FYG');
+    }, [])
 
     const changeLang = (lang) => {
         i18n.changeLanguage(lang).then()
