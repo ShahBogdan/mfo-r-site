@@ -59,7 +59,7 @@ const Main = props => {
 
                             <Row className='mt-4 text-center'>
                                 <Col>
-                                    {t('Сумма до')}<br/>
+                                    {t("Сумма до")}<br/>
                                     <span className='text-primary   fw-bolder fs-5'>{sum} грн</span>
                                 </Col>
                                 <Col>
@@ -106,7 +106,7 @@ const Main = props => {
                             </Row>
 
                             <Button className='mt-2 mx-auto d-block' variant="primary"
-                                    onClick={() => window.location.href = el.url}>{t('Оформить кредит')}</Button>
+                                    onClick={() => window.location.href = el.url}>{t('Получить деньги')}</Button>
 
                             <Button className='mt-3 mx-auto d-block' variant="link"
                                     onClick={(e) => setShowInfoById(null)}>{t('Назад')}</Button>
