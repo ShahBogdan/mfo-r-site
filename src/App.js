@@ -10,6 +10,7 @@ import React, {useEffect} from "react";
 import {Button, ButtonGroup, Container, Nav, Navbar} from "react-bootstrap";
 import './i18n';
 import {useTranslation} from 'react-i18next';
+import {LinkContainer} from 'react-router-bootstrap'
 
 import ReactGA from 'react-ga';
 
@@ -27,19 +28,22 @@ function App() {
     return (
         <div className=" pb-5 h-auto">
             <Router>
-                <Navbar bg="light" expand="lg" className='border-bottom'>
+                <Navbar bg="light" expand="lg" className='border-bottom' collapseOnSelect={true}>
                     <Container>
-                        <Navbar.Brand><img width="200" height="40" src={"logo.png"} className="d-inline-block align-top"
+                        <Navbar.Brand><img width="200" src={"logo.png"} className="d-inline-block align-top"
                                            alt="Eazy-Credit"/></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav>
-                                <Link className='nav-link'
-                                      to="/">{t('Рейтинг МФО')}</Link>
-                                <Link className='nav-link'
-                                      to="/faq"> {t('Часто задаваемые вопросы')}</Link>
-                                <Link className='nav-link'
-                                      to="/info">{t('Общие сведения')}</Link>
+                                <LinkContainer to="/">
+                                    <Nav.Link>{t('Рейтинг МФО')}</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/faq">
+                                    <Nav.Link>{t('Часто задаваемые вопросы')}</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/info">
+                                    <Nav.Link>{t('Общие сведения')}</Nav.Link>
+                                </LinkContainer>
                             </Nav>
                             <form className="d-flex ms-auto">
                                 <ButtonGroup aria-label="Basic example">
