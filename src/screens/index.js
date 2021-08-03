@@ -45,10 +45,12 @@ const Main = props => {
     }
 
 
-    const sendToPartner = (url,web) => {
-        console.log('fine')
-        window.ga('send','href','click',web);
-        window.open(url, '_blank');
+    const sendToPartner = (el) => {
+        window.gtag('event', 'select_content', {
+            content_type: "product",
+            items:el
+        });
+        window.open(el.url, '_blank');
     }
 
 
@@ -97,7 +99,7 @@ const Main = props => {
                             </Table>
 
                             <Button className='mt-2 mx-auto d-block' variant="primary"
-                                    onClick={() => sendToPartner(el.url,el.title)}><i
+                                    onClick={() => sendToPartner(el)}><i
                                 className="fas fa-file-invoice-dollar text-white me-2"/>{t('Получить деньги')}</Button>
                             <Button className='mt-3 mx-auto d-block text-decoration-none' variant="link"
                                     onClick={(e) => showInfo(el.id)}> <i
