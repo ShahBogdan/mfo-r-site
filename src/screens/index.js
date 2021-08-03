@@ -46,16 +46,8 @@ const Main = props => {
 
 
     const sendToPartner = (url,web) => {
-        ReactGA.event({
-            category: 'click',
-            action: web
-        });
-        window?.ga('send', {
-            hitType: 'event',
-            eventCategory: 'click',
-            eventAction: 'click',
-            eventLabel: web
-        });
+        console.log('fine')
+        window.ga('send','href','click',web);
         window.open(url, '_blank');
     }
 
