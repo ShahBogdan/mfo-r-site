@@ -11,20 +11,11 @@ import {Button, ButtonGroup, Container, Nav, Navbar} from "react-bootstrap";
 import './i18n';
 import {useTranslation} from 'react-i18next';
 import {LinkContainer} from 'react-router-bootstrap'
-
-import ReactGA from 'react-ga';
-
 function App() {
     const {t, i18n} = useTranslation();
-
-    useEffect(() => {
-        ReactGA.initialize('G-9EW9VE7FYG');
-    }, [])
-
     const changeLang = (lang) => {
         i18n.changeLanguage(lang).then()
     }
-
     return (
         <div className=" pb-5 h-auto">
             <Router>

@@ -7,9 +7,7 @@ import ReactGA from "react-ga";
 
 const Info = props => {
     const {t} = useTranslation();
-    useEffect(()=>{
-        ReactGA.pageview(window.location.pathname + window.location.search);
-    },[])
+
     return (
         <>
             <Helmet>

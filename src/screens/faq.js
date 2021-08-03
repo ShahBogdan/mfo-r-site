@@ -23,7 +23,7 @@ const Faq = props => {
     useEffect(() => {
         setLoading(true)
         faq().then();
-        ReactGA.pageview(window.location.pathname + window.location.search);
+
     }, [])
 
     return (

@@ -47,9 +47,7 @@ const uaText = "<div class=\"col-12\">\n" +
 
 const Security = props => {
     const {i18n} = useTranslation();
-    useEffect(()=>{
-        ReactGA.pageview(window.location.pathname + window.location.search);
-    },[])
+
     return (
         <>
             <Container>

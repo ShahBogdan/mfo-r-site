@@ -24,7 +24,6 @@ const Main = props => {
     useEffect(() => {
         setLoading(true)
         mfo().then();
-        ReactGA.pageview(window.location.pathname + window.location.search);
     }, []);
 
     const calculate = (index) => {
@@ -44,6 +43,24 @@ const Main = props => {
     const showInfo = (id) => {
         setShowInfoById(id)
     }
+
+
+    const sendToPartner = (url,web) => {
+        ReactGA.event({
+            category: 'click',
+            action: web
+        });
+        window?.ga('send', {
+            hitType: 'event',
+            eventCategory: 'click',
+            eventAction: 'click',
+            eventLabel: web
+        });
+        window.open(url, '_blank');
+    }
+
+
+
     const renderList = () => {
         return list.map((el, index) => {
             let sum = el.maxSum ? Number(el.maxSum.toFixed(0)) : 0
@@ -88,7 +105,7 @@ const Main = props => {
                             </Table>
 
                             <Button className='mt-2 mx-auto d-block' variant="primary"
-                                    onClick={() => window.open(el.url, "_blank")}><i
+                                    onClick={() => sendToPartner(el.url,el.title)}><i
                                 className="fas fa-file-invoice-dollar text-white me-2"/>{t('Получить деньги')}</Button>
                             <Button className='mt-3 mx-auto d-block text-decoration-none' variant="link"
                                     onClick={(e) => showInfo(el.id)}> <i
@@ -106,7 +123,7 @@ const Main = props => {
                             </Row>
 
                             <Button className='mt-2 mx-auto d-block' variant="primary"
-                                    onClick={() => window.location.href = el.url}>{t('Получить деньги')}</Button>
+                                    onClick={() => sendToPartner(el.url,el.title)}>{t('Получить деньги')}</Button>
 
                             <Button className='mt-3 mx-auto d-block' variant="link"
                                     onClick={(e) => setShowInfoById(null)}>{t('Назад')}</Button>
